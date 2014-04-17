@@ -1,7 +1,4 @@
-wandou.github.io
+wandousama.github.io
 ================
 
-wandou pages
-
-
-Hi, Here is my Jekyll test website.
+Hi, Here is wandouSAMA's Jekyll test website.
