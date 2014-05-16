@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <script type="text/javascript" src="javascripts/jquery-2.1.1.js"></script>
+    <title>Something I said - wandouSAMA</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Something I said</h1>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        
+      </section>
+    </div>
+    
+  </body>
+  <script type="text/javascript">
+      $("#main_content").load("posts/list.html");
+  		$(".title").click(function(){
+        var url = $(this).html();
+        url = "posts/" + url.replace(new RegExp("/","gm"), "") + ".html";
+        alert(url);
+        $("#post").load(url);
+  		});
+  </script>
+</html>
