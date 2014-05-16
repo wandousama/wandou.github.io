@@ -23,15 +23,21 @@
         
       </section>
     </div>
+
+    <div class="container" id="content">
+    </div>
     
   </body>
   <script type="text/javascript">
-      $("#main_content").load("posts/list.html");
-  		$("a").live("click", function(){
+    var pre = "posts/";    
+
+    $("#main_content").load(pre + "list.html",function() {
+      $(".title").click(function(){
         var url = $(this).html();
-        url = "posts/" + url.replace(new RegExp("/","gm"), "") + ".html";
-        alert(url);
-        $("#post").load(url);
-  		});
+        url = pre + url.replace(new RegExp("/","gm"), "") + ".html";
+        $("#content").load(url);
+      });
+    });
+  		
   </script>
 </html>
