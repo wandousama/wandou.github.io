@@ -49,8 +49,8 @@ header h1 {
   margin: 0 0 0 -40px;
   font-weight: bold;
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
-  color: #879123;
-  text-shadow: 0 0 5px rgba(9, 243, 19, 0.5);
+  color: #A52B55;
+  text-shadow: 0 0 5px rgba(243, 112, 9, 0.5);
   letter-spacing: -1px;
   -webkit-font-smoothing: antialiased;
 }
@@ -224,7 +224,7 @@ hr {
 */
 
 a {
-  color: #80854E;
+  color: #A52B55;
   text-shadow: 0 0 5px rgba(224, 18, 59, 0.5);
 }
 
