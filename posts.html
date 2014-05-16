@@ -27,7 +27,7 @@
   </body>
   <script type="text/javascript">
       $("#main_content").load("posts/list.html");
-  		$(".title").click(function(){
+  		$(".title").live("click", function(){
         var url = $(this).html();
         url = "posts/" + url.replace(new RegExp("/","gm"), "") + ".html";
         alert(url);
