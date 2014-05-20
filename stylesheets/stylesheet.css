@@ -251,3 +251,10 @@ a {
 .time {
   color: #666;
 }
+
+.bottomleft {
+  position:fixed;
+  bottom:10px;
+  left:10px;
+  color: #666;
+}
