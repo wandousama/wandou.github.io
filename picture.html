@@ -25,20 +25,36 @@
       </section>
     </div>
 
-    <div class="container" id="content">
-    </div>
-    
   </body>
-  <script type="text/javascript">
-    var pre = "picture/";    
+   <script type="text/javascript">
+    var pre = "pictures/";    
 
-    $("#main_content").load(pre + "list.html",function() {
+    $("#main_content").load(pre + "list.html", function() {
       $(".title").click(function(){
-        var url = $(this).html();
-        url = pre + url.replace(new RegExp("/","gm"), "") + ".html";
-        $("#content").load(url);
+        //replace "/"
+        var url = $(this).html().replace(new RegExp("/","gm"), "");
+        var contentId = "content" + url.substring(0, url.indexOf("."));
+        var content = $("#" + contentId);
+        // if already load this content
+        if(content != null && content.length != 0) {
+          // if not display
+          if(content.css("display") == "none") {
+            content.fadeIn("slow");
+          // if displaied
+          } else {
+            content.fadeOut("fast");
+          }
+        // if not load this content, load it
+        } else {
+          url = pre + url;
+          $(this).parent().append("<div class='container content' id='"+contentId+"' style='display: none;'><img src='"+url+"'/></div>") 
+          $("#" + contentId).fadeIn("slow");
+        }
+        
       });
     });
-      
+    $(".container").dblclick(function() {
+      $(".content").fadeOut("fast");
+    });
   </script>
 </html>
