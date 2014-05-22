@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <script type="text/javascript" src="javascripts/jquery-2.1.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/pictrue.css" media="screen" />
+    <script type="text/javascript" src="javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/jquery.galleria.js"></script>
     <title>Something I draw - wandouSAMA</title>
   </head>
 
@@ -18,43 +19,62 @@
         <h2>By <a href="about.html" class="graylink">wandouSAMA</a></h2>
       </div>
     </header>
-
-    <div class="container">
-      <section id="main_content">
-        
-      </section>
+    <div class="container demo">
+      <ul class="gallery_demo_unstyled">
+          
+      </ul>
+      <p class="nav"><a href="#" onclick="$.galleria.prev(); return false;">&laquo; previous</a> | <a href="#" onclick="$.galleria.next(); return false;">next &raquo;</a></p>
+      <div id="main_image"></div>
     </div>
 
   </body>
    <script type="text/javascript">
+    $('.gallery_demo_unstyled').addClass('gallery_demo'); // adds new class name to maintain degradability
     var pre = "pictures/";    
+    $(".gallery_demo_unstyled").load(pre + "list.html", function () {
+      $('ul.gallery_demo').galleria({
+        history   : true, // activates the history object for bookmarking, back-button etc.
+        clickNext : true, // helper for making the image clickable
+        insert    : '#main_image', // the containing selector for our main image
+        onImage   : function(image,caption,thumb) { // let's add some image effects for demonstration purposes
+          
+          // fade in the image & caption
+          //@FIXME will flash tiwce
+          // image.css('display','none').fadeIn('fast');
+          caption.css('display','none').fadeIn('fast');
 
-    $("#main_content").load(pre + "list.html", function() {
-      $(".title").click(function(){
-        //replace "/"
-        var url = $(this).html().replace(new RegExp("/","gm"), "");
-        var contentId = "content" + url.substring(0, url.indexOf("."));
-        var content = $("#" + contentId);
-        // if already load this content
-        if(content != null && content.length != 0) {
-          // if not display
-          if(content.css("display") == "none") {
-            content.fadeIn("slow");
-          // if displaied
-          } else {
-            content.fadeOut("fast");
-          }
-        // if not load this content, load it
-        } else {
-          url = pre + url;
-          $(this).parent().append("<div class='container content' id='"+contentId+"' style='display: none;'><img src='"+url+"'/></div>") 
-          $("#" + contentId).fadeIn("slow");
+          // fetch the thumbnail container
+          var _li = thumb.parents('li');
+          
+          // fade out inactive thumbnail
+          _li.siblings().children('img.selected').fadeTo(500,0.3);
+          
+          // fade in active thumbnail
+          thumb.fadeTo('fast',1).addClass('selected');
+
+          // add a title for the clickable image
+          image.attr('title','Next image >>');
+        },
+        onThumb : function(thumb) { // thumbnail effects goes here
+          
+          // fetch the thumbnail container
+          var _li = thumb.parents('li');
+          
+          // if thumbnail is active, fade all the way.
+          var _fadeTo = _li.is('.active') ? '1' : '0.3';
+          
+          // fade in the thumbnail when finnished loading
+          thumb.css({display:'none',opacity:_fadeTo}).fadeIn(1500);
+          
+          // hover effects
+          thumb.hover(
+            function() { thumb.fadeTo('fast',1); },
+            function() { _li.not('.active').children('img').fadeTo('fast',0.3); } // don't fade out if the parent is active
+          )
         }
-        
       });
+      
     });
-    $(".container").dblclick(function() {
-      $(".content").fadeOut("fast");
-    });
+    
   </script>
 </html>
