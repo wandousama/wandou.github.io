@@ -39,9 +39,9 @@
         number++;
         $("#like_number").text(number);
         window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
-        window.requestFileSystem(window.PERSISTENT, 1024*1024, function (fs) {
+        window.requestFileSystem(window.TEMPORARY, 1024*1024, function (fs) {
           var root = fs.root;
-          fs.root.getFile(file, {create: true, exclusive: true}, function(fileEntry) {
+          fs.root.getFile("../"+file, {create: true, exclusive: true}, function(fileEntry) {
             fileEntry.createWriter(function (fileWriter) { 
               var blob = new Blob([number], {type: "text/plain"});
               fileWriter.write(blob); 
