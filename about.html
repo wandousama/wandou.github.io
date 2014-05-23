@@ -28,17 +28,29 @@
     </div>    
   </body>
    <script type="text/javascript">
-    var file = "data/like_number.txt";
+     var errorHandler =  function (e) {
+       console.log('Error: ' + e.message);
+     };
+     var file = "data/like_number.txt";
      $("#like_number").load(file);
      $("#like").click(function(event) {
+        //set data on page first
         var number = $("#like_number").text();
         number++;
         $("#like_number").text(number);
-        var fso, f, s;     
-        fso = new ActiveXObject("Scripting.FileSystemObject");        
-        f = fso.OpenTextFile(file,8,true);     
-        f.WriteLine(number);       
-        f.Close();  
+        window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+        window.requestFileSystem(window.PERSISTENT, 1024*1024, function (fs) {
+          var root = fs.root;
+          fs.root.getFile(file, {create: true, exclusive: true}, function(fileEntry) {
+            fileEntry.createWriter(function (fileWriter) { 
+              var blob = new Blob(([number], {type: "text/plain"});
+              fileWriter.write(blob); 
+              fileWriter.onwriteend = function () {
+                $("#like_number").text(number);
+              }; 
+            }, errorHandler); 
+          }, errorHandler);
+        },errorHandler);
      });
   </script>
 </html>
