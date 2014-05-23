@@ -86,6 +86,11 @@ header h2 {
   text-align: center;
   color: #810F0F;
 }
+
+#like_number{
+   font-size: 14px;
+   color: #CF2B2B;
+}
 section img {
   max-width: 100%
 }
@@ -233,6 +238,7 @@ hr {
 a {
   color: #CF2B2B;
   text-shadow: 0 0 5px rgba(252, 37, 8, 0.5);
+  text-decoration: none;
 }
 
 /* Clearfix */
@@ -254,6 +260,7 @@ a {
   color: #666;
   text-shadow: 0 0 0px;
   text-decoration: none;
+  cursor:default;
 }
 
 .time {

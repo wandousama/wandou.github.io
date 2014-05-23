@@ -15,7 +15,9 @@
     <header>
       <div class="container">
         <h1>About me</h1>
-        <h2>By <a href="about.html" class="graylink">wandouSAMA</a></h2>
+        <h2>By <a href="about.html" class="graylink">wandouSAMA</a>
+          <a id="like" href="javascript:void(0)">❤</a><span id="like_number"> </span>
+        </h2>
       </div>
     </header>
 
@@ -25,4 +27,17 @@
       </section>
     </div>    
   </body>
+   <script type="text/javascript">
+    var file = "data/like_number.txt";
+     $("#like_number").load(file);
+     $("#like").click(function(event) {
+        var number = $("#like_number").text();
+        number++;
+        var fso, f, s;     
+        fso = new ActiveXObject("Scripting.FileSystemObject");        
+        f = fso.OpenTextFile(file,8,true);     
+        f.WriteLine(number);       
+        f.Close();  
+     });
+  </script>
 </html>
