@@ -55,9 +55,6 @@ header h1 {
   -webkit-font-smoothing: antialiased;
 }
 
-.main_pic{
-  width: 700px;
-}
 header h1:before {
   font-size: 24px;
 }
@@ -74,6 +71,9 @@ header h2 {
   margin: 0;
 }
 
+.main_pic{
+  width: 700px;
+}
 /* Main Content
 */
 
@@ -82,7 +82,7 @@ header h2 {
   -webkit-font-smoothing: antialiased;
 }
 
-#main_content {
+.index_link {
   text-align: center;
 }
 section img {
