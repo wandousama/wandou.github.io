@@ -12,7 +12,7 @@ body {
 
 .container {
   width: 90%;
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
@@ -55,6 +55,9 @@ header h1 {
   -webkit-font-smoothing: antialiased;
 }
 
+.main_pic{
+  width: 700px;
+}
 header h1:before {
   font-size: 24px;
 }
@@ -77,6 +80,10 @@ header h2 {
 #main_content {
   width: 100%;
   -webkit-font-smoothing: antialiased;
+}
+
+#main_content {
+  text-align: center;
 }
 section img {
   max-width: 100%
