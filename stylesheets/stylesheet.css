@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   background: #151515 url("../images/bkg.png") 0 0;
-  color: #eaeaea;
+  color: #FFFFFF;
   font: 16px;
   line-height: 1.5;
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
@@ -49,7 +49,6 @@ header h1 {
   margin: 0 0 0 -40px;
   font-weight: bold;
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
-  color: #CF2B2B;
   text-shadow: 0 0 5px rgba(243, 112, 9, 0.5);
   letter-spacing: -1px;
   -webkit-font-smoothing: antialiased;
@@ -62,7 +61,7 @@ header h1:before {
 header h2 {
   font-size: 18px;
   font-weight: 300;
-  color: #666;
+  color: #867751;
 }
 
 #downloads .btn {
@@ -72,24 +71,28 @@ header h2 {
 }
 
 .main_pic{
-  width: 700px;
+  margin-top: 100px;
+  text-align:center;
 }
 /* Main Content
 */
 
 #main_content {
   width: 100%;
+  margin: 0 0 20px 0;
   -webkit-font-smoothing: antialiased;
 }
 
 .index_link {
   text-align: center;
-  color: #810F0F;
+  vertical-align: sub;
+  margin-top: 600px;
+  min-height: 300px;
 }
 
 #like_number{
    font-size: 14px;
-   color: #CF2B2B;
+   
 }
 section img {
   max-width: 100%
@@ -129,7 +132,7 @@ h1, h2, h3, h4, h5, h6 {
 #main_content h6 {
   font-size: 12px;
   text-transform: uppercase;
-  color: #999;
+  color: #867751;
   margin: 0 0 5px 0;
 }
 
@@ -146,14 +149,13 @@ ul li:before {
   content: ">>";
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
   font-size: 13px;
-  color: #CF2B2;
   margin-left: -37px;
   margin-right: 21px;
   line-height: 16px;
 }
 
 blockquote {
-  color: #aaa;
+  color: #867751;
   padding-left: 10px;
   border-left: 1px dotted #666;
 }
@@ -163,7 +165,6 @@ pre {
   border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 10px;
   font-size: 14px;
-  color: #CF2B2;
   border-radius: 2px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
@@ -191,7 +192,6 @@ hr {
   height: 0;
   border: 0;
   border-bottom: 1px dashed #CF2B2;
-  color: #CF2B2;
 }
 
 /* Buttons
@@ -236,8 +236,8 @@ hr {
 */
 
 a {
-  color: #CF2B2B;
-  text-shadow: 0 0 5px rgba(252, 37, 8, 0.5);
+  color: #FFFFFF;
+  text-shadow: 0 0 5px rgba(223, 199, 196, 0.5);
   text-decoration: none;
 }
 
@@ -257,19 +257,23 @@ a {
 }
 
 .graylink {
-  color: #666;
+  color: #867751;
   text-shadow: 0 0 0px;
   text-decoration: none;
   cursor:default;
 }
 
 .time {
-  color: #666;
+  color: #9E9C9C;
 }
 
 .bottomleft {
   position:fixed;
   bottom:10px;
   left:10px;
-  color: #666;
+  color: #867751;
+}
+
+.content {
+  color: #867751;
 }

@@ -6,30 +6,37 @@
 
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <script type="text/javascript" src="javascripts/jquery-2.1.1.js"></script>
     <title>Call Me wandouSAMA</title>
   </head>
 
   <body>
     <a href="http://weibo.com/wandouyaha" class="bottomleft" >Weibo</a>
-    <header>
+   <!--  <header>
       <div class="container">
         <h1>Hope you have a nice day!</h1>
         <h2>By <a href="about.html" class="graylink">wandouSAMA</a></h2>
       </div>
-    </header>
+    </header> -->
 
-    <div class="container">
-      <section id="main_content">
-        <p><img class="main_pic" src="images/main.jpg"></p>
-        <div class="index_link">
-          <a href="posts.html">Something I said</a> | 
-          <a href="picture.html#pictures/1.jpg">Something I draw</a> | 
-          <a href="music.html">Something I listen</a>
-        </div>     
-      </section>
+    <div class="main_pic"><img src="images/main2.png"></div>
 
+    <div class="index_link" id="main_content">
+      <div>
+        <a href="posts.html">Something I said</a> | 
+        <a href="picture.html#pictures/1.jpg">Something I draw</a> | 
+        <a href="music.html">Something I listen</a>
+      </div>
     </div>
 
    
   </body>
+  <script type="text/javascript">
+    $("#main_content").mouseover(function(event) {
+       $("#main_content div").fadeIn('fast');
+    });
+    $("#main_content").mouseout(function(event) {
+       $("#main_content div").fadeOut('fast');
+    });
+  </script>
 </html>
