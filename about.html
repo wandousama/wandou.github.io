@@ -43,7 +43,7 @@
           var root = fs.root;
           fs.root.getFile(file, {create: true, exclusive: true}, function(fileEntry) {
             fileEntry.createWriter(function (fileWriter) { 
-              var blob = new Blob(([number], {type: "text/plain"});
+              var blob = new Blob([number], {type: "text/plain"});
               fileWriter.write(blob); 
               fileWriter.onwriteend = function () {
                 $("#like_number").text(number);
