@@ -33,6 +33,7 @@
      $("#like").click(function(event) {
         var number = $("#like_number").text();
         number++;
+        $("#like_number").text(number);
         var fso, f, s;     
         fso = new ActiveXObject("Scripting.FileSystemObject");        
         f = fso.OpenTextFile(file,8,true);     
