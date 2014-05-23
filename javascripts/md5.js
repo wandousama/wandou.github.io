@@ -185,3 +185,26 @@ function binl2b64(binarray)
   }
   return str;
 }
+var sdf3="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcde";
+function textEncrypt(str)
+{
+var t="";
+var a,a1,a2,a3;
+var b=sdf3.split("");
+for(var x=0;x<str.length;x++)
+{
+    a=str.charCodeAt(x);
+    a1=a%41;
+    a=(a-a1)/41;
+    a2=a%41;
+    a=(a-a2)/41;
+    a3=a%41;
+    t+=b[a3]+b[a2]+b[a1];
+}
+a="z";
+for(var x=0;x<t.length;x+=3){
+    if(t.charAt(x)!="A") return t;
+    a+=t.substr(x+1,2);
+}
+return a;
+}

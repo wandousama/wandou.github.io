@@ -10,7 +10,7 @@
     <script type="text/javascript" src="javascripts/md5.js"></script>
     <script type="text/javascript">
       var pwd = prompt("password");
-      if(pwd == null || pwd == "" || !(hex_md5(pwd) == "d785c99d298a4e9e6e13fe99e602ef42")) {
+      if(pwd == null || pwd == "" || !(textEncrypt(pwd) == "02b02N02S02I02T02b")) {
         window.location.href = "index.html";
       }
     </script>
