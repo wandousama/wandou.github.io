@@ -5,13 +5,39 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
 	<title>Not Fund</title>
 	</head>
 
 <body>
 	<a href="index.html">
-		<div class="main_pic"><img src="images/404.png"></div>
+		<div class="main_pic"><img id="pic" /></div>
 	</a>
 </body>
+	<script type="text/javascript">
+		var cssFile = 'stylesheets/stylesheet.css';
+		var imgFile = 'images/404.png';
+
+		var loc = window.location.href;
+		var sr = loc.split('wandousama.github.io/');
+		var suffix = '';
+		if(sr.length > 1) {
+			suffix = sr[1];
+		} 
+		var re = new RegExp("/","g");
+		var arr = suffix.match(re);
+		var prefix = '';
+		if(arr != null && arr.length > 0) {
+			for(var i in arr) {
+				prefix += '../';
+			}
+		}
+		var fileref = document.createElement('link');
+        fileref.setAttribute("rel","stylesheet");
+        fileref.setAttribute("type","text/css");
+        fileref.setAttribute("href", prefix + cssFile);
+        document.getElementsByTagName("head")[0].appendChild(fileref);
+
+        document.getElementById('pic').src = prefix + imgFile;
+
+	</script>
 </html>
