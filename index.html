@@ -32,11 +32,15 @@
    
   </body>
   <script type="text/javascript">
-    $("#main_content").mouseover(function(event) {
-       $("#main_content div").fadeIn('fast');
+    $("#main_content a").mouseover(function(event) {
+       $(this).fadeOut('fast');
+       $(this).fadeIn('slow');
     });
-    $("#main_content").mouseout(function(event) {
-       $("#main_content div").fadeOut('fast');
-    });
+    // $("#main_content").mouseover(function(event) {
+    //    $("#main_content div").fadeIn('fast');
+    // });
+    // $("#main_content").mouseout(function(event) {
+    //    $("#main_content div").fadeOut('fast');
+    // });
   </script>
 </html>
