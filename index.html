@@ -22,16 +22,18 @@
     <div class="main_pic"><img src="images/main2.png"></div>
 
     <div class="index_link" id="main_content">
-      <div>
         <a href="posts.html">Words I said</a> | 
         <a href="picture.html#pictures/1.jpg">Picture I drew</a> | 
         <a href="music.html">Melody I listen</a>
-      </div>
     </div>
 
    
   </body>
   <script type="text/javascript">
+    $(".main_pic img").mouseover(function(event) {
+       $("#main_content").fadeIn('slow');
+       $(".main_pic").unbind('mouseover');
+    });
     $("#main_content a").mouseover(function(event) {
        $(this).fadeOut('fast');
        $(this).fadeIn('slow');
