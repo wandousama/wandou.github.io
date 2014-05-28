@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<link rel="shortcut icon" href="http://wandousama.github.io/images/favicon.jpg"/>
+	<link rel="shortcut icon" href="images/favicon.jpg"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
@@ -15,6 +15,7 @@
 	</a>
 </body>
 	<script type="text/javascript">
+		var iconFile = 'images/favicon.jpg';
 		var cssFile = 'stylesheets/stylesheet.css';
 		var imgFile = 'images/404.png';
 
@@ -37,6 +38,11 @@
         fileref.setAttribute("type","text/css");
         fileref.setAttribute("href", prefix + cssFile);
         document.getElementsByTagName("head")[0].appendChild(fileref);
+
+        var iconref = document.createElement('link');
+        iconref.setAttribute("rel","shortcut icon");
+        iconref.setAttribute("href", prefix + iconFile);
+        document.getElementsByTagName("head")[0].appendChild(iconref);
 
         document.getElementById('pic').src = prefix + imgFile;
 
