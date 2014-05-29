@@ -277,3 +277,12 @@ a {
 .content {
   color: #867751;
 }
+
+.info span {
+  color: #867751;
+  font-weight : 900;
+}
+
+.info p {
+  text-indent: 2em;
+}
