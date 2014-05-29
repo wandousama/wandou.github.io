@@ -276,6 +276,10 @@ a {
 
 .content {
   color: #867751;
+  text-indent: 2em;
+}
+.content strong {
+  color: #BEB496;
 }
 
 .info span {
