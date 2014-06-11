@@ -88,42 +88,56 @@
      //    }, errorHandler);
      // };
 
-     
-     // $("#like_number").load(file);
-     var number = localStorage.getItem("sandouSAMA_like");
-     var time = localStorage.getItem("sandouSAMA_like_time");
-     // has like number, and record in 7 days
-     if(number != null && (time < new Date().getTime() - 604800000)) {
+     //save data
+     var saveDate = function (number, liked, nowTime) {
        $("#like_number").text(number);
-     } else {
-      // create new number
-       $("#like_number").text(Math.round(Math.random()*100));
        localStorage.setItem("sandouSAMA_like", number);
-     }
-     // set liked or not
-     if(localStorage.getItem("sandouSAMA_liked") == "true") {
-        $("#like").addClass('red');
-     }
-     
-     $("#like").click(function(event) {
-        var liked = localStorage.getItem("sandouSAMA_liked");
-        var number = $("#like_number").text();
-        //set data on page first
-        if(liked == "true") {
-          $("#like").removeClass('red');
-          number--;
-          liked = "false";
-        } else {
+       localStorage.setItem("sandouSAMA_liked", liked);
+       localStorage.setItem("sandouSAMA_like_time", new Date().getTime());
+     };
+
+     $(document).ready(function(){
+        // $("#like_number").load(file);
+       var number = localStorage.getItem("sandouSAMA_like");
+       // has like number
+       if(number != null) {
+         number = parseInt(number);
+         var time = localStorage.getItem("sandouSAMA_like_time");
+         // if no last time or over 1 day, add random number
+         if(time == null || (new Date().getTime() - parseInt(time))/ 86400000 > 1 ) {
+            number += Math.round(Math.random()*10);
+         }
+       } else {
+         // create new number
+         number = Math.round(Math.random()*100);
+       }
+       var liked = localStorage.getItem("sandouSAMA_liked");
+       // set liked or not
+       if(liked == "true") {
           $("#like").addClass('red');
-          number++;
-          liked = "true";
-        }
-        $("#like_number").text(number);
-        localStorage.setItem("sandouSAMA_like", number);
-        localStorage.setItem("sandouSAMA_like_time", new Date().getTime());
-        localStorage.setItem("sandouSAMA_liked", liked);
-        // window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
-        // window.requestFileSystem(window.TEMPORARY, 1024*1024, writeFile,errorHandler);
+       }
+       saveDate(number, liked);
+
+       // click function
+       $("#like").click(function(event) {
+          var liked = localStorage.getItem("sandouSAMA_liked");
+          var number = $("#like_number").text();
+          //set data on page first
+          if(liked == "true") {
+            $("#like").removeClass('red');
+            number--;
+            liked = "false";
+          } else {
+            $("#like").addClass('red');
+            number++;
+            liked = "true";
+          }
+          saveDate(number, liked);
+          // window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+          // window.requestFileSystem(window.TEMPORARY, 1024*1024, writeFile,errorHandler);
+       });
      });
+     
+     
   </script>
 </html>
