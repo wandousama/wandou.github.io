@@ -93,7 +93,7 @@
      var number = localStorage.getItem("sandouSAMA_like");
      var time = localStorage.getItem("sandouSAMA_like_time");
      // has like number, and record in 7 days
-     if(number != null && (time < new Date().getTime() - 604800000) {
+     if(number != null && (time < new Date().getTime() - 604800000)) {
        $("#like_number").text(number);
      } else {
       // create new number
