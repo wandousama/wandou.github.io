@@ -72,9 +72,9 @@
 
      // var file = "like_number.txt";
 
-     var errorHandler =  function (e) {
-       console.log('Error: ' + e.name + " -> " + e.message);
-     };
+     // var errorHandler =  function (e) {
+     //   console.log('Error: ' + e.name + " -> " + e.message);
+     // };
 
      // var writeFile = function (fs) {
      //    fs.root.getFile(file, {create: true, exclusive: true}, function(fileEntry) {
@@ -91,12 +91,16 @@
      
      // $("#like_number").load(file);
      var number = localStorage.getItem("sandouSAMA_like");
-     if(number != null) {
+     var time = localStorage.getItem("sandouSAMA_like_time");
+     // has like number, and record in 7 days
+     if(number != null && (time < new Date().getTime() - 604800000) {
        $("#like_number").text(number);
      } else {
+      // create new number
        $("#like_number").text(Math.round(Math.random()*100));
+       localStorage.setItem("sandouSAMA_like", number);
      }
-
+     // set liked or not
      if(localStorage.getItem("sandouSAMA_liked") == "true") {
         $("#like").addClass('red');
      }
@@ -116,6 +120,7 @@
         }
         $("#like_number").text(number);
         localStorage.setItem("sandouSAMA_like", number);
+        localStorage.setItem("sandouSAMA_like_time", new Date().getTime());
         localStorage.setItem("sandouSAMA_liked", liked);
         // window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
         // window.requestFileSystem(window.TEMPORARY, 1024*1024, writeFile,errorHandler);
