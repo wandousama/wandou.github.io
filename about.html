@@ -6,8 +6,8 @@
     <link rel="shortcut icon" href="images/icon.jpg"/>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <script type="text/javascript" src="javascripts/jquery-2.1.1.min.js"></script>
-    <title>Something I said - wandouSAMA</title>
+     <script type="text/javascript" src="http://adrianyao.qiniudn.com/js/lib/jquery/jquery.min.js"></script>
+    <title>About - wandouSAMA</title>
   </head>
 
   <body>
@@ -69,29 +69,56 @@
     </div>    
   </body>
    <script type="text/javascript">
+
+     // var file = "like_number.txt";
+
      var errorHandler =  function (e) {
-       console.log('Error: ' + e.message);
+       console.log('Error: ' + e.name + " -> " + e.message);
      };
-     var file = "data/like_number.txt";
-     $("#like_number").load(file);
+
+     // var writeFile = function (fs) {
+     //    fs.root.getFile(file, {create: true, exclusive: true}, function(fileEntry) {
+     //      fileEntry.createWriter(function (fileWriter) {
+     //        var blob = new Blob([number], {type: "text/plain"});
+     //        fileWriter.write(number); 
+     //        fileWriter.onwriteend = function () {
+     //          $("#like_number").text(number);
+     //        }; 
+     //      }, errorHandler); 
+     //    }, errorHandler);
+     // };
+
+     
+     // $("#like_number").load(file);
+     var number = localStorage.getItem("sandouSAMA_like");
+     if(number != null) {
+       $("#like_number").text(number);
+     } else {
+       $("#like_number").text(Math.round(Math.random()*100));
+     }
+
+     if(localStorage.getItem("sandouSAMA_liked") == "true") {
+        $("#like").css('color', 'red');
+     }
+     
      $("#like").click(function(event) {
-        //set data on page first
+        var liked = localStorage.getItem("sandouSAMA_liked");
         var number = $("#like_number").text();
-        number++;
+        //set data on page first
+        if(liked == "true") {
+          $("#like").removeClass('red');
+          number--;
+          liked = "false";
+        } else {
+          $("#like").addClass('red');
+          number++;
+          liked = "true";
+        }
         $("#like_number").text(number);
-        window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
-        window.requestFileSystem(window.TEMPORARY, 1024*1024, function (fs) {
-          var root = fs.root;
-          fs.root.getFile("../"+file, {create: true, exclusive: true}, function(fileEntry) {
-            fileEntry.createWriter(function (fileWriter) { 
-              var blob = new Blob([number], {type: "text/plain"});
-              fileWriter.write(blob); 
-              fileWriter.onwriteend = function () {
-                $("#like_number").text(number);
-              }; 
-            }, errorHandler); 
-          }, errorHandler);
-        },errorHandler);
+        localStorage.setItem("sandouSAMA_like", number);
+        localStorage.setItem("sandouSAMA_liked", liked);
+        // window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+        // window.requestFileSystem(window.TEMPORARY, 1024*1024, writeFile,errorHandler);
      });
   </script>
 </html>

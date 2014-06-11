@@ -290,3 +290,7 @@ a {
 .info p {
   text-indent: 2em;
 }
+
+.red {
+  color: red;
+}
